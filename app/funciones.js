@@ -4,7 +4,6 @@ function post() {
         var datos = {
             nombre: document.getElementById("nombre").value,
             genero: document.getElementById("genero").value,
-
         }
 
         fetch('http://127.0.0.1:8000/api/bands', {
@@ -18,14 +17,20 @@ function post() {
             .then(json => console.log(json))
     })
 }
+
+
 function borrar(id) {
+    id=parseInt(id);
     fetch('http://127.0.0.1:8000/api/bands' + id, {
         method: "DELETE"
     })
         .then(res => res.json())
         .then(json => console.log(json))
+        alert("datos eliminados");
 
 }
+
+
 function obtenerDatos() {
     var endPoint = document.getElementById("endpoint").value;
     var tabla = document.getElementById("tbody");

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/app/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Document</title>
@@ -19,7 +20,7 @@
         </nav>
     </header>
 
-    <!-- Formularios  -->
+    <!-- Formulario  -->
     <div class="container">
         <form id="myform">
             <label for="nombre">nombre</label>
@@ -27,9 +28,9 @@
             <label for="genero">genero</label>
             <input type="text" id="genero" class="form-control">
             <br>
-            <button type="submit" class="btn btn-info" onclick="post()" >Enviar </button>
+            <button type="submit" class="btn btn-info" onclick="post()">Enviar </button>
         </form>
-
+        <!-- Tabla  -->
         <table class="table">
             <br>
             <thead>
@@ -40,15 +41,19 @@
             </thead>
             <tbody id="tbody"></tbody>
         </table>
-        <div >
+        <div>
             <label>Ingrese el endpoint </label>
             <input type="text" class="form-control" id="endpoint">
             <br>
             <button type="submit" class="btn btn-secondary" onclick="obtenerDatos()">Secondary</button>
         </div>
-
     </div>
 
+    <!-- Footer -->
+    <footer class="py-3 my-4">
+        <p class="mt-5 mb-3 text-body-secondary text-center">&copy; Grupo 4</p>
+    </footer>
+    <!-- link archivo js -->
     <script src="funciones.js"></script>
 </body>
 
