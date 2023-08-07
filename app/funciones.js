@@ -46,13 +46,7 @@ function obtenerDatos() {
                 }
                 for (let i = 0; i< datos.length; i++) {
                 contenido = contenido + "<tr><td>" + datos[i].name + "</td><td>" + datos[i].genre_id + "</td><td><button class='btn btn-warning'>Editar</button>" + "<button class='btn btn-danger' onclick='borrar("+datos[i].id+")'>Eliminar</button></td></tr>";}
-            };
-
-           
-            tabla.innerHTML = contenido;
-
-            
-            
-            
+            };    
+            tabla.innerHTML = contenido;           
         })
     }
