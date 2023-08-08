@@ -1,3 +1,4 @@
+// ********* Género
 function post() {
     document.getElementById("myform").addEventListener("submit", function (event) {
         event.preventDefault();
@@ -6,7 +7,7 @@ function post() {
             genero: document.getElementById("genero").value,
         }
 
-        fetch('http://127.0.0.1:8000/api/bands', {
+        fetch('http://127.0.0.1:8000/api/genres', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -21,7 +22,7 @@ function post() {
 
 function borrar(id) {
     id = parseInt(id);
-    fetch('http://127.0.0.1:8000/api/bands' + id, {
+    fetch('http://127.0.0.1:8000/api/genres' + id, {
         method: "DELETE"
     })
         .then(res => res.json())
