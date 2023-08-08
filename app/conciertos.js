@@ -1,11 +1,17 @@
 // **** Conciertos **
 function agregarDatos() {
+  var nuevoBanda = document.getElementById("nuevoBanda").value;
   var nuevoNombre = document.getElementById("nuevoNombre").value;
-  var nuevoGenreId = document.getElementById("nuevoGenreId").value;
-
+  var nuevoFecha = document.getElementById("nuevoFecha").value;
+  var nuevoDuracion = document.getElementById("nuevoDuracion").value;
+  var nuevoLugar = document.getElementById("nuevoLugar").value;
+  
   var nuevoDato = {
+    band_id: nuevoBanda,
     name: nuevoNombre,
-    genre_id: nuevoGenreId
+    date: nuevoFecha,
+    time: nuevoFecha,
+    place: nuevoLugar
   };
   
 

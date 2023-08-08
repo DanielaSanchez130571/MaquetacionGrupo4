@@ -1,11 +1,19 @@
 // ************ Albumes *******
 function agregarDatos() {
+  var nuevoBanda = document.getElementById("nuevoBanda").value;
   var nuevoNombre = document.getElementById("nuevoNombre").value;
-  var nuevoGenreId = document.getElementById("nuevoGenreId").value;
-
+  var nuevoFecha = document.getElementById("nuevoFecha").value;
+  var nuevoLugar = document.getElementById("nuevoLugar").value;
+  var nuevoDuracion = document.getElementById("nuevoDuracion").value;
+  var nuevoVentas = document.getElementById("nuevoVentas").value;
+  
   var nuevoDato = {
+    band_id: nuevoBanda,
     name: nuevoNombre,
-    genre_id: nuevoGenreId
+    release_date: nuevoFecha,
+    place: nuevoLugar,
+    duration: nuevoDuracion,
+    copies_sold: nuevoVentas
   };
   
 
@@ -26,7 +34,6 @@ function agregarDatos() {
     })
     
 }
-console.log("Mundo")
 
 function borrar(id) {
   id = parseInt(id);

@@ -1,11 +1,9 @@
 // *** Género ***
 function agregarDatos() {
   var nuevoNombre = document.getElementById("nuevoNombre").value;
-  var nuevoGenreId = document.getElementById("nuevoGenreId").value;
 
   var nuevoDato = {
-    name: nuevoNombre,
-    genre_id: nuevoGenreId
+    name: nuevoNombre
   };
   
 
@@ -26,7 +24,6 @@ function agregarDatos() {
     })
     
 }
-console.log("Mundo")
 
 function borrar(id) {
   id = parseInt(id);
