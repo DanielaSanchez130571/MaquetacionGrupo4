@@ -55,46 +55,50 @@ function obtenerDatos() {
           }
         }
         tabla.innerHTML = contenido;
+        consumir();
       });
-  }
-  
+    }
 
 
-function consumir() {
-    var endPoint = document.getElementById("endpoint").value;
-    var name = [];
-    var genre_id = [];
-  
-    // Llamado a la API
-    fetch(endPoint)
-      // Promesa cuando se cumple o cuando la respuesta es exitosa
-      .then(function (respuesta) {
-        return respuesta.json();
-      })
-      // Promesa recibe los datos en formato JSON
-      .then(function (datos) {
-        for (var i = 0; i < datos.length; i++) {
-          if (datos[i].name != undefined && datos[i].genre_id != undefined) {
-            name.push(datos[i].name);
-            genre_id.push(datos[i].genre_id);
-          }
-        }
-  
-        var data = [
-          {
-            x: name,
-            y: genre_id,
-            type: "bar",
-            orientation: "v",
-            marker: { color: "rgba(0,0,255)" },
-          },
-        ];
-  
-        var layout = {
-          title: "Gráfica de barras",
-        };
-  
-        Plotly.newPlot("myDiv1", data, layout);
-      });
-  }
+
+    function consumir() {
+        var endPoint = document.getElementById("endpoint").value;
+        var name = [];
+        var genre_id = [];
+      
+        // Llamado a la API
+        fetch(endPoint)
+          // Promesa cuando se cumple o cuando la respuesta es exitosa
+          .then(function (respuesta) {
+            return respuesta.json();
+          })
+          // Promesa recibe los datos en formato JSON
+          .then(function (datos) {
+            for (var i = 0; i < datos.length; i++) {
+              if (datos[i].name != undefined && datos[i].genre_id != undefined) {
+                name.push(datos[i].name);
+                genre_id.push(datos[i].genre_id);
+              }
+            }
+      
+            var data = [
+              {
+                x: name,
+                y: genre_id,
+                type: "bar",
+                orientation: "v",
+                marker: { color: "rgba(0,0,255)" },
+              },
+            ];
+      
+            var layout = {
+              title: "Gráfica de barras",
+            };
+      
+            Plotly.newPlot("myDiv1", data, layout);
+          });
+      }
+    
+
+
   
