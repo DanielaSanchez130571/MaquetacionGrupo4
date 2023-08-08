@@ -1,34 +1,44 @@
 // **** Conciertos **
-function post() {
-  document.getElementById("myform").addEventListener("submit", function (event) {
-    event.preventDefault();
-    var datos = {
-      nombre: document.getElementById("nombre").value,
-      genero: document.getElementById("genero").value,
-    }
+function agregarDatos() {
+  var nuevoNombre = document.getElementById("nuevoNombre").value;
+  var nuevoGenreId = document.getElementById("nuevoGenreId").value;
 
-    fetch('http://127.0.0.1:8000/api/concerts', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datos)
-    })
-      .then(res => res.json())
-      .then(json => console.log(json))
+  var nuevoDato = {
+    name: nuevoNombre,
+    genre_id: nuevoGenreId
+  };
+  
+
+  fetch('http://127.0.0.1:8000/api/bands', {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(nuevoDato)
+    
   })
+    .then(res => res.json())
+    .then(json => {
+      console.log(json);
+      alert("Nuevo dato agregado");
+      obtenerDatos();
+    })
+    
 }
-
+console.log("Mundo")
 
 function borrar(id) {
   id = parseInt(id);
-  fetch('http://127.0.0.1:8000/api/concerts' + id, {
-    method: "DELETE"
-  })
-    .then(res => res.json())
-    .then(json => console.log(json))
+  fetch('http://127.0.0.1:8000/api/bands/' + id, {
+  method: "DELETE"
+})
+.then(res => res.json())
+.then(json => {
+  console.log(json);
   alert("datos eliminados");
-
+})
+.catch(error => console.error('Error:', error));
 }
 
 function obtenerDatos() {

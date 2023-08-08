@@ -38,8 +38,6 @@ function borrar(id) {
   alert("datos eliminados");
 })
 .catch(error => console.error('Error:', error));
-
-
 }
 
 function obtenerDatos() {
