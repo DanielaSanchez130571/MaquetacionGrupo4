@@ -1,4 +1,4 @@
-// ************ Albumes
+// ************ Albumes *******
 
 function post() {
     document.getElementById("myform").addEventListener("submit", function (event) {
