@@ -20,13 +20,13 @@ function post() {
 
 
 function borrar(id) {
-    id=parseInt(id);
+    id = parseInt(id);
     fetch('http://127.0.0.1:8000/api/bands' + id, {
         method: "DELETE"
     })
         .then(res => res.json())
         .then(json => console.log(json))
-        alert("datos eliminados");
+    alert("datos eliminados");
 
 }
 
@@ -48,11 +48,16 @@ function obtenerDatos() {
                 if ((datos[i].name != undefined) && (datos[i].genre_id != undefined)) {
                     names.push(datos[i].name);
                     genre_ids.push(datos[i].genre_id);
+                    
                 }
                 for (let i = 0; i < datos.length; i++) {
                     contenido = contenido + "<tr><td>" + datos[i].name + "</td><td>" + datos[i].genre_id + "</td><td><button class='btn btn-warning'>Editar</button>" + "<button class='btn btn-danger' onclick='borrar(" + datos[i].id + ")'>Eliminar</button></td></tr>";
+                    console.log("Hola");
                 }
             };
             tabla.innerHTML = contenido;
+            return tabla.innerHTML;
+            
         })
+
 }
