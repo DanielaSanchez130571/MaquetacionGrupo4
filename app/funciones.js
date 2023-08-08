@@ -30,34 +30,71 @@ function borrar(id) {
 
 }
 
-
 function obtenerDatos() {
     var endPoint = document.getElementById("endpoint").value;
     var tabla = document.getElementById("tbody");
     fetch(endPoint)
-        .then(function (respuesta) {
-            return respuesta.json();
-        })
+      .then(function (respuesta) {
+        return respuesta.json();
+      })
+      .then(function (datos) {
+        console.log(datos);
+        var contenido = "";
+        for (var i = 0; i < datos.length; i++) {
+          if (datos[i].name != undefined && datos[i].genre_id != undefined) {
+            contenido =
+              contenido +
+              "<tr><td>" +
+              datos[i].name +
+              "</td><td>" +
+              datos[i].genre_id +
+              "</td><td><button class='btn btn-warning'>Editar</button>" +
+              "<button class='btn btn-danger' onclick='borrar(" +
+              datos[i].id +
+              ")'>Eliminar</button></td></tr>";
+          }
+        }
+        tabla.innerHTML = contenido;
+      });
+  }
+  
 
-        .then(function (datos) {
-            console.log(datos);
-            var names = [];
-            var genre_ids = [];
-            var contenido = "";
-            for (var i = 0; i < datos.length; i++) {
-                if ((datos[i].name != undefined) && (datos[i].genre_id != undefined)) {
-                    names.push(datos[i].name);
-                    genre_ids.push(datos[i].genre_id);
-                    
-                }
-                for (let i = 0; i < datos.length; i++) {
-                    contenido = contenido + "<tr><td>" + datos[i].name + "</td><td>" + datos[i].genre_id + "</td><td><button class='btn btn-warning'>Editar</button>" + "<button class='btn btn-danger' onclick='borrar(" + datos[i].id + ")'>Eliminar</button></td></tr>";
-                    console.log("Hola");
-                }
-            };
-            tabla.innerHTML = contenido;
-            return tabla.innerHTML;
-            
-        })
 
-}
+function consumir() {
+    var endPoint = document.getElementById("endpoint").value;
+    var name = [];
+    var genre_id = [];
+  
+    // Llamado a la API
+    fetch(endPoint)
+      // Promesa cuando se cumple o cuando la respuesta es exitosa
+      .then(function (respuesta) {
+        return respuesta.json();
+      })
+      // Promesa recibe los datos en formato JSON
+      .then(function (datos) {
+        for (var i = 0; i < datos.length; i++) {
+          if (datos[i].name != undefined && datos[i].genre_id != undefined) {
+            name.push(datos[i].name);
+            genre_id.push(datos[i].genre_id);
+          }
+        }
+  
+        var data = [
+          {
+            x: name,
+            y: genre_id,
+            type: "bar",
+            orientation: "v",
+            marker: { color: "rgba(0,0,255)" },
+          },
+        ];
+  
+        var layout = {
+          title: "Gráfica de barras",
+        };
+  
+        Plotly.newPlot("myDiv1", data, layout);
+      });
+  }
+  
