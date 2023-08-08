@@ -23,7 +23,7 @@ function post() {
 
 function borrar(id) {
     id = parseInt(id);
-    fetch('http://127.0.0.1:8000/api/bands' + id, {
+    fetch('http://127.0.0.1:8000/api/albums' + id, {
         method: "DELETE"
     })
         .then(res => res.json())
