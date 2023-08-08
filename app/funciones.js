@@ -1,11 +1,12 @@
 function agregarDatos() {
-  var nuevoNombre = document.getElementById("nuevoNombre").value; // Supongamos que tienes un elemento HTML con ID "nuevoNombre"
-  var nuevoGenreId = document.getElementById("nuevoGenreId").value; // Supongamos que tienes un elemento HTML con ID "nuevoGenreId"
+  var nuevoNombre = document.getElementById("nuevoNombre").value;
+  var nuevoGenreId = document.getElementById("nuevoGenreId").value;
 
   var nuevoDato = {
     name: nuevoNombre,
     genre_id: nuevoGenreId
   };
+  
 
   fetch('http://127.0.0.1:8000/api/bands', {
     method: "POST",
@@ -14,31 +15,30 @@ function agregarDatos() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(nuevoDato)
+    
   })
     .then(res => res.json())
     .then(json => {
       console.log(json);
       alert("Nuevo dato agregado");
-      obtenerDatos(); // Actualizar la tabla y gráfica con los nuevos datos
+      obtenerDatos();
     })
-    .catch(error => console.error('Error:', error));
+    
 }
-
-
-
-
-
-
-
+console.log("Mundo")
 
 function borrar(id) {
   id = parseInt(id);
-  fetch('http://127.0.0.1:8000/api/bands' + id, {
-    method: "DELETE"
-  })
-    .then(res => res.json())
-    .then(json => console.log(json))
+  fetch('http://127.0.0.1:8000/api/bands/' + id, {
+  method: "DELETE"
+})
+.then(res => res.json())
+.then(json => {
+  console.log(json);
   alert("datos eliminados");
+})
+.catch(error => console.error('Error:', error));
+
 
 }
 

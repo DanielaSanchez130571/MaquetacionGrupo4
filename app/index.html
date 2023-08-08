@@ -44,17 +44,12 @@
 
     <div class="container">
         <form id="myform">
-
-            <label for="nuevoNombre" > name</label>
-    
+            <label for="nuevoNombre">Nombre</label>
             <input type="text" id="nuevoNombre" class="form-control">
-    
-            <label for="nuevoGenreId" > genre_id </label>
-    
+            <label for="nuevoGenreId">Descripcion</label>
             <input type="text" id="nuevoGenreId" class="form-control">
-    
-            <button onclick="agregarDatos()">Haga click aqui</button>     
-
+            
+            <button type="submit" onclick="agregarDatos()">Haga click aqui</button>     
         </form>
     
     
@@ -71,7 +66,7 @@
             <input type="text" class="form-control" id="endpoint">
             <br>
             <button type="submit" class="btn btn-secondary" onclick="obtenerDatos()">Obtener Datos</button>
-            <!-- <button class="btn btn-success mt-4" onclick="consumir()">Consultar Graficas</button> -->
+            
             
         </div>
         <table class="table">
